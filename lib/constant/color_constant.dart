@@ -1,0 +1,11 @@
+import 'package:flutter/material.dart';
+
+class ColorConstant{
+  final Color primary = Colors.blueAccent;
+  final Color secondary = Colors.green;
+  final Color tertiary = Colors.orange;
+
+  final Color darkBlue = const Color(0xff00008B);
+  final Color white = const Color(0xffffffff);
+  final Color black = const Color(0xff000000);
+}
