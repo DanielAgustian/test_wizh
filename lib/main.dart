@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_wizh/constant/text_constant.dart';
 import 'package:test_wizh/screen/splash_screen.dart';
 import 'package:test_wizh/settings/router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -23,6 +28,7 @@ class MyApp extends StatelessWidget {
           title: TextConstant().appName,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
+            fontFamily: 'Poppins',
             useMaterial3: true,
           ),
         );
