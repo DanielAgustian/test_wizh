@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:test_wizh/constant/color_constant.dart';
+import 'package:test_wizh/constant/others_constant.dart';
 import 'package:test_wizh/constant/text_constant.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,6 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    _gotoNextPage();
   }
 
   @override
@@ -65,5 +70,11 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
       ),
     );
+  }
+
+  void _gotoNextPage(){
+    Timer(Duration(milliseconds:OthersConstant().splashScreenWait ), (){
+      context.go("/list");
+    });
   }
 }
