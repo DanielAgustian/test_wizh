@@ -7,7 +7,8 @@ class WhizScaffold extends StatelessWidget {
   final Widget body;
   final PreferredSizeWidget? appbar;
   final Function? backFunction;
-  const WhizScaffold({super.key, required this.body, this.appbar, this.backFunction});
+  final Future<void> Function() onRefresh;
+  const WhizScaffold({super.key, required this.body, this.appbar, this.backFunction, required this.onRefresh});
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -21,9 +22,12 @@ class WhizScaffold extends StatelessWidget {
         }
       },
       child: SafeArea(
-        child: Scaffold(
-          appBar: appbar,
-          body: body,
+        child: RefreshIndicator(
+          onRefresh: onRefresh,
+          child: Scaffold(
+            appBar: appbar,
+            body: body,
+          ),
         ),
       ),
     );

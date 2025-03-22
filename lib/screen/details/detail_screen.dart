@@ -20,19 +20,30 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return WhizScaffold(
+        onRefresh: () async {
+          
+        },
         appbar: const WhizAppBar(
+          hasBackButton: true,
           titleWidget: WhizAppbarTitle(title: ""),
         ),
         body: _body(context));
   }
 
   Widget _body(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          GalleryPart(srcImages: srcImages),
-        ],
-      ),
+    Size size = MediaQuery.of(context).size;
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          expandedHeight: size.width <= 500 ? 300 : 350,
+          floating: false,
+          pinned: false,
+          flexibleSpace: FlexibleSpaceBar(
+              background: GalleryPart(
+            srcImages: srcImages,
+          )),
+        ),
+      ],
     );
   }
 }

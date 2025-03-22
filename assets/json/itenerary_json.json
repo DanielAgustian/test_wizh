@@ -1,0 +1,43 @@
+[
+    {
+      "date": "2025-04-01",
+      "details": [
+        {
+          "hour": "08:00 AM",
+          "place_name": "Hotel Breakfast",
+          "place_description": "Enjoy a buffet breakfast at the hotel."
+        },
+        {
+          "hour": "10:00 AM",
+          "place_name": "Bali Beach",
+          "place_description": "Relax and enjoy the beautiful ocean view."
+        },
+        {
+          "hour": "02:00 PM",
+          "place_name": "Ubud Monkey Forest",
+          "place_description": "Explore the sacred monkey sanctuary in Ubud."
+        }
+      ]
+    },
+    {
+      "date": "2025-04-02",
+      "details": [
+        {
+          "hour": "09:00 AM",
+          "place_name": "Tegallalang Rice Terrace",
+          "place_description": "Scenic views of Bali’s famous rice terraces."
+        },
+        {
+          "hour": "12:30 PM",
+          "place_name": "Lunch at Local Restaurant",
+          "place_description": "Try authentic Balinese cuisine."
+        },
+        {
+          "hour": "03:00 PM",
+          "place_name": "Tanah Lot Temple",
+          "place_description": "Visit the iconic sea temple at sunset."
+        }
+      ]
+    }
+  ]
+  

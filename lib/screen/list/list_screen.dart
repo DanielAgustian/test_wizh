@@ -1,7 +1,10 @@
+// ignore_for_file: unused_result
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:test_wizh/constant/color_constant.dart';
 import 'package:test_wizh/constant/text_constant.dart';
@@ -35,9 +38,7 @@ class _ListScreenState extends ConsumerState<ListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WhizScaffold(
-      body: _body(context),
-    );
+    return _body(context);
   }
 
   Widget _body(BuildContext context) {
@@ -45,9 +46,12 @@ class _ListScreenState extends ConsumerState<ListScreen> {
     final tripsAsync = ref.watch(getTripsProvider);
 
     return WhizScaffold(
+      onRefresh: () async {
+        ref.refresh(getTripsProvider);
+      },
       appbar: WhizAppBar(
         titleWidget: SizedBox(
-          width: 0.6.sw,
+          width: 0.7.sw,
           child: WhizInput(
             borderColor: ColorConstant().white,
             placeholder: TextConstant().search,
@@ -89,7 +93,6 @@ class _ListScreenState extends ConsumerState<ListScreen> {
           error: (Object error, StackTrace stackTrace) => _errorList(),
           loading: () => _loadingList(),
         ),
-        
       ]),
     );
   }
@@ -106,7 +109,6 @@ class _ListScreenState extends ConsumerState<ListScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            
             Text(
               TextConstant().titleList,
               style: TextStyle(
@@ -114,7 +116,6 @@ class _ListScreenState extends ConsumerState<ListScreen> {
                   fontSize: 20.sp,
                   fontWeight: FontWeight.bold),
             ),
-            
             Text(
               TextConstant().descList,
               style: TextStyle(
@@ -136,20 +137,26 @@ class _ListScreenState extends ConsumerState<ListScreen> {
           src: item.src,
           price: item.price,
           rating: item.rating,
+          onClick: () {
+            context.go('/list/${item.id}');
+          },
         ),
       ),
-      SizedBox(height: 16.h,)
+      SizedBox(
+        height: 16.h,
+      )
     ];
   }
 
   Widget _loadingList() {
     List<Widget> loader = [];
     for (var i = 0; i < 2; i++) {
-      loader.add(const TripsItem(
+      loader.add(TripsItem(
         title: "LoremIpsum",
         src: "afdasfasfafafa",
         price: -1000000,
         rating: 1,
+        onClick: () {},
       ));
     }
 

@@ -30,10 +30,12 @@ class WhizAppBar extends StatelessWidget implements PreferredSizeWidget {
               onTap: () => LogicUtils().popHandler(context),
               child: Padding(
                 padding: EdgeInsets.all(4.sp),
-                child: FaIcon(
-                  FontAwesomeIcons.chevronLeft,
-                  color: ColorConstant().black,
-                  size: 24.sp,
+                child: Center(
+                  child: FaIcon(
+                    FontAwesomeIcons.chevronLeft,
+                    color: ColorConstant().white,
+                    size: 20.sp,
+                  ),
                 ),
               ),
             )
