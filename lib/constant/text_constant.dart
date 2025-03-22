@@ -7,4 +7,6 @@ class TextConstant {
   final String failedToLoad = "Failed Loading Image";
   final String search = "Search....";
   final String buttonDetails = "More Details";
+  final String titleList = "Currently Open Trip";
+  final String descList = "Please check our curated trips!";
 }

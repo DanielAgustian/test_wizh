@@ -83,11 +83,12 @@ class CarouselPart extends StatelessWidget {
                 ),
               
                 Padding(
-                  padding:  EdgeInsets.only(top: 10.h),
+                  padding:  EdgeInsets.only(top: 16.h),
                   child: WhizButton(
                     onClick: () {},
                     title: TextConstant().buttonDetails,
-                    width: 200,
+                    width: 140.w,
+                    padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
                     fontSize: 13.sp,
                   ),
                 )

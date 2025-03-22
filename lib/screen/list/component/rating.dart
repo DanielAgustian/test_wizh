@@ -59,16 +59,16 @@ class RatingBar extends StatelessWidget {
   }
 
   Widget stars(StarsEnum type) {
-    Color colorStar = Colors.yellowAccent;
+    Color colorStar = Colors.yellow;
 
     switch (type) {
       case StarsEnum.full:
-        return FaIcon(FontAwesomeIcons.star, color: colorStar, size: size);
+        return FaIcon(FontAwesomeIcons.solidStar, color: colorStar, size: size);
       case StarsEnum.half:
         return FaIcon(FontAwesomeIcons.starHalf, color: colorStar, size: size);
       case StarsEnum.empty:
-        return FaIcon(FontAwesomeIcons.star,
-            color: ColorConstant().colorGray, size: size);
+        return FaIcon(FontAwesomeIcons.solidStar,
+            color: ColorConstant().colorLightGray, size: size);
       default:
         return Container();
     }

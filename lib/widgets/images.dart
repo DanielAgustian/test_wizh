@@ -34,7 +34,7 @@ class WhizImage extends StatelessWidget {
           return Skeletonizer(child: child);
         },
         errorBuilder: (context, error, stackTrace) {
-          return _errorImage();
+          return _errorImage(context);
         },
       );
     }
@@ -46,9 +46,9 @@ class WhizImage extends StatelessWidget {
     );
   }
 
-  Widget _errorImage() {
+  Widget _errorImage(BuildContext context) {
     return Container(
-      width: width ?? double.infinity,
+      width: width ?? 400 ,
       height: height ?? 300,
       color: ColorConstant().colorLightGray,
       child: Center(

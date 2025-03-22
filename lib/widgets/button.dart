@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_wizh/constant/color_constant.dart';
@@ -10,6 +12,7 @@ class WhizButton extends StatefulWidget {
   final Color? txtColor;
   final double? fontSize;
   final Function onClick;
+  final EdgeInsetsGeometry? padding;
   const WhizButton({
     super.key,
     required this.title,
@@ -18,7 +21,8 @@ class WhizButton extends StatefulWidget {
     this.txtColor,
     this.width = 250,
     this.rippleColor,
-    this.fontSize, 
+    this.fontSize,
+    this.padding,
   });
 
   @override
@@ -33,14 +37,19 @@ class _WhizButtonState extends State<WhizButton> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          isPressed = !isPressed; // Toggle state
+          isPressed = true; // Toggle state
+        });
+        Timer(const Duration(milliseconds: 350), () {
+          setState(() {
+            isPressed = false;
+          });
         });
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 400),
         curve: Curves.easeInOut,
         width: widget.width,
-        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
+        padding: widget.padding ??  EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
         decoration: BoxDecoration(
           color: isPressed
               ? widget.bgColor ?? ColorConstant().primary

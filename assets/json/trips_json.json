@@ -4,20 +4,34 @@
       "title": "Bali Getaway",
       "rating": "4.5",
       "price": "1500000",
-      "src": "https://example.com/bali.jpg"
+      "src": "https://perkim.id/wp-content/uploads/2025/03/ilustrasi-bali_169.jpeg"
     },
     {
       "id": 2,
       "title": "Mountain Adventure",
       "rating": 4.8,
       "price": 2000000,
-      "src": "https://example.com/mountain.jpg"
+      "src": "https://montane.com/cdn/shop/articles/Spirit-22_1024x1024.jpg?v=1670578630"
     },
     {
       "id": 3,
       "title": "Beach Paradise",
       "rating": "4.2",
       "price": "1250000",
-      "src": "https://example.com/beach.jpg"
+      "src": "https://s19538.pcdn.co/wp-content/uploads/2021/07/road-trip-1024x512.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Jungle Retreat",
+      "rating": "4.7",
+      "price": "1750000",
+      "src": "https://images.pexels.com/photos/1421153/pexels-photo-1421153.jpeg"
+    },
+    {
+      "id": 5,
+      "title": "Desert Expedition",
+      "rating": 4.6,
+      "price": 1800000,
+      "src": "https://images.pexels.com/photos/461593/pexels-photo-461593.jpeg"
     }
   ]
