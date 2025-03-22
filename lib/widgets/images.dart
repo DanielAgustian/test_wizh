@@ -10,13 +10,14 @@ class WhizImage extends StatelessWidget {
   final String src;
   final double? height;
   final double? width;
-
+  final BoxFit? fit;
   const WhizImage({
     super.key,
     required this.isRemoteImage,
     required this.src,
     this.height,
     this.width,
+    this.fit,
   });
   @override
   Widget build(BuildContext context) {
@@ -25,8 +26,11 @@ class WhizImage extends StatelessWidget {
         src,
         height: height,
         width: width,
-        fit: BoxFit.cover,
+        fit: fit ?? BoxFit.cover,
         loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) {
+            return child;
+          }
           return Skeletonizer(child: child);
         },
         errorBuilder: (context, error, stackTrace) {

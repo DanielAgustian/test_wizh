@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:test_wizh/screen/detail_screen.dart';
-import 'package:test_wizh/screen/list_screen.dart';
+import 'package:test_wizh/screen/details/detail_screen.dart';
+import 'package:test_wizh/screen/list/list_screen.dart';
 import 'package:test_wizh/screen/splash_screen.dart';
 
 final GoRouter router = GoRouter(routes: [

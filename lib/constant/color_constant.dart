@@ -11,4 +11,5 @@ class ColorConstant{
 
   final Color colorGray = const Color(0xff808080);
   final Color colorLightGray = const Color(0xffBBBBBB);
+  final Color colorDarkGray = const Color(0xff404040);
 }

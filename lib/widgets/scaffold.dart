@@ -20,9 +20,11 @@ class WhizScaffold extends StatelessWidget {
           );
         }
       },
-      child: Scaffold(
-        appBar: appbar,
-        body: body,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: appbar,
+          body: body,
+        ),
       ),
     );
   }

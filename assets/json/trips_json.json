@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "title": "Bali Getaway",
+      "rating": "4.5",
+      "price": "1500000",
+      "src": "https://example.com/bali.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Mountain Adventure",
+      "rating": 4.8,
+      "price": 2000000,
+      "src": "https://example.com/mountain.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Beach Paradise",
+      "rating": "4.2",
+      "price": "1250000",
+      "src": "https://example.com/beach.jpg"
+    }
+  ]

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_wizh/screen/component/gallery.dart';
+import 'package:test_wizh/screen/details/components/gallery.dart';
 import 'package:test_wizh/widgets/appbar.dart';
 import 'package:test_wizh/widgets/scaffold.dart';
 
@@ -20,18 +20,19 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return WhizScaffold(
-        appbar: const WhizAppBar(title: ""), body: _body(context));
-  } 
+        appbar: const WhizAppBar(
+          titleWidget: WhizAppbarTitle(title: ""),
+        ),
+        body: _body(context));
+  }
 
-  Widget _body(BuildContext context){
+  Widget _body(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
           GalleryPart(srcImages: srcImages),
-          
         ],
       ),
     );
   }
-  
 }

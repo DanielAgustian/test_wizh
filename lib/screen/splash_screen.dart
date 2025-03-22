@@ -26,11 +26,15 @@ class _SplashScreenState extends State<SplashScreen> {
     Size size = MediaQuery.of(context).size;
 
     return SafeArea(
+      
       child: Container(
-        height: size.height,
-        width: size.width,
-        decoration: _bgDecoration(),
-        child: _logo(),
+        color: ColorConstant().white,
+        child: Container(
+          height: size.height,
+          width: size.width,
+          decoration: _bgDecoration(),
+          child: _logo(),
+        ),
       ),
     );
   }
@@ -57,9 +61,11 @@ class _SplashScreenState extends State<SplashScreen> {
         text: TextSpan(
           text: TextConstant().logoHalf1,
           style: TextStyle(
+            fontStyle: 
+            FontStyle.italic,
             color: ColorConstant().white,
             fontWeight: FontWeight.bold,
-            fontSize: 32.sp,
+            fontSize: 36.sp,
           ),
           children: <TextSpan>[
             TextSpan(
