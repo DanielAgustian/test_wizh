@@ -8,17 +8,23 @@ class WhizScaffold extends StatelessWidget {
   final PreferredSizeWidget? appbar;
   final Function? backFunction;
   final Future<void> Function() onRefresh;
-  const WhizScaffold({super.key, required this.body, this.appbar, this.backFunction, required this.onRefresh});
+  final Widget? bottomSheet;
+  const WhizScaffold({
+    super.key,
+    required this.body,
+    this.appbar,
+    this.backFunction,
+    required this.onRefresh,
+    this.bottomSheet,
+  });
   @override
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
       onPopInvoked: (didPop) {
+        print(didPop);
         if (!didPop) {
-          LogicUtils().popHandler(
-            context,
-            customFunc: backFunction
-          );
+          LogicUtils().popHandler(context, customFunc: backFunction);
         }
       },
       child: SafeArea(
@@ -27,6 +33,7 @@ class WhizScaffold extends StatelessWidget {
           child: Scaffold(
             appBar: appbar,
             body: body,
+            bottomSheet: bottomSheet,
           ),
         ),
       ),

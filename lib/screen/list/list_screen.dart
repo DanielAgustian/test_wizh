@@ -138,7 +138,7 @@ class _ListScreenState extends ConsumerState<ListScreen> {
           price: item.price,
           rating: item.rating,
           onClick: () {
-            context.go('/list/${item.id}');
+            context.push('/list/detail', extra: item);
           },
         ),
       ),

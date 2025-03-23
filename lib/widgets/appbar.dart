@@ -68,6 +68,8 @@ class WhizAppbarTitle extends StatelessWidget {
         color: txtColor ?? ColorConstant().white,
         fontSize: 16.sp,
       ),
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
       textAlign: TextAlign.start,
     );
   }

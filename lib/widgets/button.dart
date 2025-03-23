@@ -7,6 +7,7 @@ import 'package:test_wizh/constant/color_constant.dart';
 class WhizButton extends StatefulWidget {
   final String title;
   final double? width;
+  final double? height;
   final Color? bgColor;
   final Color? rippleColor;
   final Color? txtColor;
@@ -19,10 +20,10 @@ class WhizButton extends StatefulWidget {
     required this.onClick,
     this.bgColor,
     this.txtColor,
-    this.width = 250,
+    this.width = 200,
     this.rippleColor,
     this.fontSize,
-    this.padding,
+    this.padding, this.height,
   });
 
   @override
@@ -49,6 +50,7 @@ class _WhizButtonState extends State<WhizButton> {
         duration: const Duration(milliseconds: 400),
         curve: Curves.easeInOut,
         width: widget.width,
+        height: widget.height ?? 50.h,
         padding: widget.padding ??  EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
         decoration: BoxDecoration(
           color: isPressed
@@ -61,7 +63,7 @@ class _WhizButtonState extends State<WhizButton> {
           widget.title,
           style: TextStyle(
             color: widget.txtColor ?? Colors.white,
-            fontSize: widget.fontSize ?? 16.sp,
+            fontSize: widget.fontSize ?? 14.sp,
           ),
         ),
       ),
