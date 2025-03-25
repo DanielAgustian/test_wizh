@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test_wizh/data/model/trips_model.dart';
-import 'package:test_wizh/data/service/services.dart';
+import 'package:test_wizh/data/providers/providers.dart';
 import 'package:test_wizh/screen/details/components/bottom_sheet.dart';
 import 'package:test_wizh/screen/details/components/info_detail_screen.dart';
 import 'package:test_wizh/screen/details/components/tab_bar.dart';
@@ -25,7 +25,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
   Map<String, GlobalKey> widgetKeys = {
     "title": GlobalKey(),
     "itinerary": GlobalKey(),
-    "tnc": GlobalKey(),
+    "Terms": GlobalKey(),
     "description": GlobalKey(),
   };
 
@@ -38,7 +38,29 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
     _scrollController.addListener(_scrollListener);
   }
 
-  void _scrollListener() {}
+  void _scrollListener() {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final maxExtent = _scrollController.position.maxScrollExtent;
+    final currentScrollPosition = _scrollController.position.pixels;
+    if (currentScrollPosition >= maxExtent) {
+      ref.read(tabProvider.notifier).state = "description";
+      return; 
+    }
+    widgetKeys.forEach((key, globalKey) {
+      final renderBox =
+          globalKey.currentContext?.findRenderObject() as RenderBox?;
+      if (renderBox != null) {
+        final position = renderBox.localToGlobal(Offset.zero);
+        if (position.dy >= 0 && position.dy <= screenHeight * 0.5) {
+          ref.read(tabProvider.notifier).state = key;
+        }
+        if (position.dy == 0) {
+          ref.read(tabProvider.notifier).state = "title";
+        }
+     
+      }
+    });
+  }
 
   void refresh() {
     ref.refresh(getItinerariesProvider(widget.model.id));
@@ -85,8 +107,10 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
           floating: false,
           pinned: false,
           flexibleSpace: FlexibleSpaceBar(
-              background:
-                  WhizImage(isRemoteImage: true, src: widget.model.src)),
+              background: WhizImage(
+                  key: widgetKeys["title"],
+                  isRemoteImage: true,
+                  src: widget.model.src)),
         ),
         ScrollTabBar(
           onTapTab: onTapTab,

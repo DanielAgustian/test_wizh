@@ -10,7 +10,7 @@ class LogicUtils {
   }) {
     {
       if (kDebugMode) {
-        print("Back Here! ${context.canPop()}" );
+        print("Back Here! ${context.canPop()}");
       }
       if (context.canPop()) {
         context.pop();
@@ -31,5 +31,10 @@ class LogicUtils {
   String toReadableDate(String date) {
     DateTime dataDate = DateTime.parse(date);
     return DateFormat("EEEE, d MMM y").format(dataDate);
+  }
+
+  String capitalize(String text) {
+    if (text.isEmpty) return text;
+    return text[0].toUpperCase() + text.substring(1);
   }
 }

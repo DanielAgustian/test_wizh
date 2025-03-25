@@ -47,7 +47,7 @@ class WhizAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => Size.fromHeight(60.h);
 }
 
 class WhizAppbarTitle extends StatelessWidget {
@@ -65,9 +65,9 @@ class WhizAppbarTitle extends StatelessWidget {
     return Text(
       title,
       style: TextStyle(
-        color: txtColor ?? ColorConstant().white,
-        fontSize: 16.sp,
-      ),
+          color: txtColor ?? ColorConstant().white,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.bold),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
       textAlign: TextAlign.start,

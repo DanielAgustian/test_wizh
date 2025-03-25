@@ -6,7 +6,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 import 'package:test_wizh/constant/color_constant.dart';
 import 'package:test_wizh/constant/text_constant.dart';
 import 'package:test_wizh/data/model/trips_model.dart';
-import 'package:test_wizh/data/service/services.dart';
+import 'package:test_wizh/data/providers/providers.dart';
 import 'package:test_wizh/screen/details/components/atom/detail_box.dart';
 import 'package:test_wizh/screen/details/components/atom/term_box.dart';
 import 'package:test_wizh/screen/details/components/itenerary_day_box.dart';
@@ -56,7 +56,6 @@ class _InfoDetailScreenState extends ConsumerState<InfoDetailScreen> {
 
   Widget _titlePart() {
     return DetailBox(
-      key: widget.widgetKeys["title"],
       child: Padding(
         padding: EdgeInsets.only(top: 10.w),
         child: Row(
@@ -138,7 +137,7 @@ class _InfoDetailScreenState extends ConsumerState<InfoDetailScreen> {
 
   Widget _termAndCondition() {
     return DetailBox(
-        key: widget.widgetKeys["tnc"],
+        key: widget.widgetKeys["Terms"],
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -177,7 +176,6 @@ class _InfoDetailScreenState extends ConsumerState<InfoDetailScreen> {
 
   Widget _description() {
     return DetailBox(
-      key: widget.widgetKeys["description"],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -197,6 +195,9 @@ class _InfoDetailScreenState extends ConsumerState<InfoDetailScreen> {
               color: ColorConstant().colorGray,
               fontSize: 12.sp,
             ),
+          ),
+          SizedBox(
+            key: widget.widgetKeys["description"],
           )
         ],
       ),

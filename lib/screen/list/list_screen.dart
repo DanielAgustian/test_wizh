@@ -10,7 +10,7 @@ import 'package:test_wizh/constant/color_constant.dart';
 import 'package:test_wizh/constant/text_constant.dart';
 import 'package:test_wizh/constant/widget_constant.dart';
 import 'package:test_wizh/data/model/trips_model.dart';
-import 'package:test_wizh/data/service/services.dart';
+import 'package:test_wizh/data/providers/providers.dart';
 import 'package:test_wizh/screen/list/component/carrousel_part.dart';
 import 'package:test_wizh/screen/list/component/trips_item.dart';
 import 'package:test_wizh/widgets/appbar.dart';
