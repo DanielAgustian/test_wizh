@@ -14,6 +14,7 @@ import 'package:test_wizh/data/providers/providers.dart';
 import 'package:test_wizh/screen/list/component/carrousel_part.dart';
 import 'package:test_wizh/screen/list/component/trips_item.dart';
 import 'package:test_wizh/widgets/appbar.dart';
+import 'package:test_wizh/widgets/dialog.dart';
 import 'package:test_wizh/widgets/input.dart';
 import 'package:test_wizh/widgets/scaffold.dart';
 
@@ -60,7 +61,7 @@ class _ListScreenState extends ConsumerState<ListScreen> {
         bgColor: null,
         rightIcons: [
           InkWell(
-            onTap: () {},
+            onTap: _openDialog,
             child: Padding(
               padding: EdgeInsets.fromLTRB(5.w, 5.h, 8.w, 5.h),
               child: FaIcon(
@@ -202,5 +203,41 @@ class _ListScreenState extends ConsumerState<ListScreen> {
         childCount: 1,
       ),
     );
+  }
+
+  void _openDialog() {
+    WhizDialog.show(context,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "About OpenTrip",
+              style: TextStyle(
+                  fontSize: 15.sp,
+                  color: ColorConstant().primary,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 4.h,
+            ),
+            Text(
+                "This app is for testing purpose only and not for commercial use.",
+                style: TextStyle(
+                    fontSize: 13.sp,
+                    color: ColorConstant().colorDarkGray,
+                    fontWeight: FontWeight.normal)),
+            SizedBox(
+              height: 12.h,
+            ),
+            Text(
+              "Made by Daniel Agustian",
+              style: TextStyle(
+                  fontSize: 14.sp,
+                  color: ColorConstant().tertiary,
+                  fontWeight: FontWeight.bold),
+            ),
+          ],
+        ));
   }
 }

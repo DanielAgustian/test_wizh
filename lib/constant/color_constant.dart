@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorConstant{
-  final Color primary = Colors.blueAccent;
+  final Color primary = const Color.fromRGBO(68, 138, 255, 1);
   final Color secondary = Colors.green;
   final Color tertiary = Colors.orange;
 

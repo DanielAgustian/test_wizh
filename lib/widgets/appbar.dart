@@ -23,6 +23,7 @@ class WhizAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return AppBar(
       backgroundColor: bgColor ?? ColorConstant().primary,
       leading: hasBackButton
@@ -43,11 +44,12 @@ class WhizAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: titleWidget,
       centerTitle: isCenterTitle,
       actions: rightIcons,
+      toolbarHeight: size.width>= 500 ? 80.h: null,
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(60.h);
+ Size get preferredSize =>  Size.fromHeight(60.h);
 }
 
 class WhizAppbarTitle extends StatelessWidget {
