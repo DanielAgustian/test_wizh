@@ -15,10 +15,11 @@ import 'package:test_wizh/widgets/button.dart';
 
 class InfoDetailScreen extends ConsumerStatefulWidget {
   final TripsModel data;
-
+  final Map<String, GlobalKey> widgetKeys;
   const InfoDetailScreen({
     super.key,
     required this.data,
+    required this.widgetKeys,
   });
 
   @override
@@ -55,42 +56,46 @@ class _InfoDetailScreenState extends ConsumerState<InfoDetailScreen> {
 
   Widget _titlePart() {
     return DetailBox(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  widget.data.title,
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    color: ColorConstant().primary,
-                    fontWeight: FontWeight.bold,
+      key: widget.widgetKeys["title"],
+      child: Padding(
+        padding: EdgeInsets.only(top: 10.w),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.data.title,
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      color: ColorConstant().primary,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 4.h,
-                ),
-                RatingBar(
-                  rating: widget.data.rating,
-                  limit: 5,
-                  size: 11.sp,
-                  textSize: 13.sp,
-                )
-              ],
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  RatingBar(
+                    rating: widget.data.rating,
+                    limit: 5,
+                    size: 11.sp,
+                    textSize: 13.sp,
+                  )
+                ],
+              ),
             ),
-          ),
-          WhizButton(
-            height: 50.h,
-            width: 100.w,
-            title: TextConstant().followUs,
-            onClick: () {},
-          )
-        ],
+            WhizButton(
+              height: 50.h,
+              width: 100.w,
+              title: TextConstant().followUs,
+              onClick: () {},
+            )
+          ],
+        ),
       ),
     );
   }
@@ -98,6 +103,7 @@ class _InfoDetailScreenState extends ConsumerState<InfoDetailScreen> {
   Widget _iteneraries() {
     final dataAsync = ref.watch(getItinerariesProvider(widget.data.id));
     return DetailBox(
+      key: widget.widgetKeys["itinerary"],
       child: dataAsync.when(
           data: (data) => Wrap(
                 children: [
@@ -132,43 +138,46 @@ class _InfoDetailScreenState extends ConsumerState<InfoDetailScreen> {
 
   Widget _termAndCondition() {
     return DetailBox(
+        key: widget.widgetKeys["tnc"],
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          TextConstant().aboutTrip,
-          style: TextStyle(
-              color: ColorConstant().primary,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold),
-        ),
-        SizedBox(
-          height: 8.h,
-        ),
-        const TermBox(
-          icons: FontAwesomeIcons.paw,
-          iconColor: Colors.red,
-          text: 'Please make sure you take care of your own pet',
-          weightText: FontWeight.bold,
-        ),
-        const TermBox(
-          icons: FontAwesomeIcons.notesMedical,
-          iconColor: Colors.green,
-          text: 'Make sure to notes your groups about your medical condition.',
-          weightText: FontWeight.bold,
-        ),
-        const TermBox(
-          icons: FontAwesomeIcons.scaleBalanced,
-          iconColor: Colors.blue,
-          text: 'Follow the law in the country you visited.',
-          weightText: FontWeight.bold,
-        ),
-      ],
-    ));
+          children: [
+            Text(
+              TextConstant().aboutTrip,
+              style: TextStyle(
+                  color: ColorConstant().primary,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 8.h,
+            ),
+            const TermBox(
+              icons: FontAwesomeIcons.paw,
+              iconColor: Colors.red,
+              text: 'Please make sure you take care of your own pet',
+              weightText: FontWeight.bold,
+            ),
+            const TermBox(
+              icons: FontAwesomeIcons.notesMedical,
+              iconColor: Colors.green,
+              text:
+                  'Make sure to notes your groups about your medical condition.',
+              weightText: FontWeight.bold,
+            ),
+            const TermBox(
+              icons: FontAwesomeIcons.scaleBalanced,
+              iconColor: Colors.blue,
+              text: 'Follow the law in the country you visited.',
+              weightText: FontWeight.bold,
+            ),
+          ],
+        ));
   }
 
   Widget _description() {
     return DetailBox(
+      key: widget.widgetKeys["description"],
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

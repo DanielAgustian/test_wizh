@@ -4,6 +4,7 @@ import 'package:test_wizh/data/model/trips_model.dart';
 import 'package:test_wizh/data/service/services.dart';
 import 'package:test_wizh/screen/details/components/bottom_sheet.dart';
 import 'package:test_wizh/screen/details/components/info_detail_screen.dart';
+import 'package:test_wizh/screen/details/components/tab_bar.dart';
 import 'package:test_wizh/widgets/appbar.dart';
 import 'package:test_wizh/widgets/images.dart';
 import 'package:test_wizh/widgets/scaffold.dart';
@@ -20,17 +21,46 @@ class DetailScreen extends ConsumerStatefulWidget {
 
 class _DetailScreenState extends ConsumerState<DetailScreen> {
   List<String> srcImages = [];
+  late ScrollController _scrollController;
+  Map<String, GlobalKey> widgetKeys = {
+    "title": GlobalKey(),
+    "itinerary": GlobalKey(),
+    "tnc": GlobalKey(),
+    "description": GlobalKey(),
+  };
+
   @override
   void initState() {
     super.initState();
-    ref.refresh(getItinerariesProvider(widget.model.id));
+    refresh();
     srcImages.add(widget.model.src);
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  void _scrollListener() {}
+
+  void refresh() {
+    ref.refresh(getItinerariesProvider(widget.model.id));
+  }
+
+  void onTapTab(String name) {
+    final context = widgetKeys[name]?.currentContext;
+    if (context != null) {
+      Scrollable.ensureVisible(
+        context,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return WhizScaffold(
-      onRefresh: () async {},
+      onRefresh: () async {
+        refresh();
+      },
       appbar: WhizAppBar(
         hasBackButton: true,
         titleWidget: WhizAppbarTitle(
@@ -47,6 +77,7 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
   Widget _body(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return CustomScrollView(
+      controller: _scrollController,
       slivers: [
         SliverAppBar(
           automaticallyImplyLeading: false,
@@ -54,10 +85,16 @@ class _DetailScreenState extends ConsumerState<DetailScreen> {
           floating: false,
           pinned: false,
           flexibleSpace: FlexibleSpaceBar(
-              background: WhizImage(isRemoteImage: true, src: widget.model.src)),
+              background:
+                  WhizImage(isRemoteImage: true, src: widget.model.src)),
         ),
-        InfoDetailScreen(data: widget.model),
-       
+        ScrollTabBar(
+          onTapTab: onTapTab,
+        ),
+        InfoDetailScreen(
+          data: widget.model,
+          widgetKeys: widgetKeys,
+        ),
       ],
     );
   }
